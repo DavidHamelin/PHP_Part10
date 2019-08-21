@@ -17,6 +17,7 @@
 
         <h1 class="text-center m-2"> <i class="far fa-file-code"></i> - TP 02 </h1>
    
+
         <form method="POST" action="tp02.php">
             <div class="container col-md-5">
                 <fieldset>
@@ -64,19 +65,38 @@
                 <input type="text" class="form-control" name="society" id="society" value="<?= $_POST['society'] ?>" required>
                 </div>            
 
-                <button class="btn btn-outline-light btn-lg" type="submit" name="action">Envoyer 
+                <button class="btn btn-outline-light btn-lg" type="submit" name="submit">Envoyer 
                 <i class="fas fa-paper-plane"> </i>
                 </button>
             </div>
         </form>
         <?php
-            if ((isset($_POST['lastname']))
-            || (isset($_POST['firstname']))
-            || (isset($_POST['gender']))
-            || (isset($_POST['age']))
-            || (isset($_POST['society']))
-            )
+         if (isset($_POST['submit'])) {
+            /* preg_match("#[^a-zA-Z-éèëëïàù]+#", $_POST['lastname'], $matches);
+            var_dump($matches); */
+
+            if( (!isset($_POST['lastname'])) || (preg_match("#[^a-zA-Z-éèëëïàù]+#", $_POST['lastname'])) )
             {
+                ?> <h4 class="text-warning text-center p-3">Veuillez saisir un nom valide</h4> <?php
+            }
+            elseif( (!isset($_POST['firstname'])) || (preg_match("#[^a-zA-Z-éèëëïàù]+#", $_POST['firstname'])) )
+            {
+                ?> <h4 class="text-warning text-center p-3">Veuillez saisir un prénom valide</h4> <?php
+            }
+            elseif(!isset($_POST['gender']))
+            {
+                ?> <h4 class="text-warning text-center p-3">Veuillez saisir une civilité </h4> <?php
+            }
+            elseif( (!isset($_POST['age'])) || (preg_match("#[^0-9]+#", $_POST['age'])) )
+            {
+                ?> <h4 class="text-warning text-center p-3">Veuillez saisir un age valide</h4> <?php
+            }
+            elseif( (!isset($_POST['society'])) || (preg_match("#[^a-zA-Z-éèëëïàù ]+#", $_POST['society'])) )
+            {
+                ?> <h4 class="text-warning text-center p-3">Veuillez saisir un nom de société valide</h4> <?php
+            }
+            
+            else{
         ?>
         <div class="container col-md-5">
         <br/>
@@ -88,6 +108,7 @@
             <p> <?= htmlspecialchars($_POST['society'])?> </p>
         </div>
         <?php
+        }
         }
         ?>
 

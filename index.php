@@ -134,7 +134,7 @@
 
                 </fieldset>
 
-                <button class="btn btn-outline-light btn-lg" type="submit" name="action">Envoyer 
+                <button class="btn btn-outline-light btn-lg" type="submit" name="submit">Envoyer 
                 <i class="fas fa-paper-plane"> </i>
                 </button>
             </div>
