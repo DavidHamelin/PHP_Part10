@@ -19,6 +19,12 @@
 
         <h1 class="text-center m-2"> <i class="far fa-file-code"></i> - PHP Part 10 - Les TP </h1>
 
+        <?php
+            /* foreach($_POST as $truc)
+            {
+                echo  '<br/>' . $truc;
+            } */
+        ?>
 
         <?php
         // Ex 01
