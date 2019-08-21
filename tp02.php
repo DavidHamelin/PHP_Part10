@@ -7,8 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
         <link rel="stylesheet" href="style.css"/>
-        <title> Php Partie 10 - TP 2 </title>
-        
+        <title> Php Partie 10 - TP 2 </title>   
     </head>
     <body>
 
@@ -27,26 +26,20 @@
                 <label for="gender">Civilité</label>
                 <select name="gender" id="gender" class="form-control" >
                 <?php
-                switch($_POST['gender'])
+                if ($_POST['gender'] == 'M.')
                 {
-                    case 'Mme': 
-                        ?>
-                        <option value="Mme" selected>Mme</option>
-                        <option value="M.">M.</option>
-                        <?php
-                    break;
-                    case 'M.':
-                        ?>
+                    ?>
                         <option value="Mme">Mme</option>
                         <option value="M." selected>M.</option>
-                        <?php
-                    break;
-                    default:
-                        ?>
+                    <?php
+                }
+                else
+                {
+                    ?>
                         <option value="Mme">Mme</option>
                         <option value="M.">M.</option>
-                        <?php
-                }   
+                    <?php
+                } 
                 ?>
                 </select>
                 </div>  
@@ -60,7 +53,6 @@
                 <label for="firstname">Prénom</label>
                 <input type="text" class="form-control" name="firstname" id="firstname" value="<?= $_POST['firstname']?>" required>
                 </div>
-
 
                 <div class="form-group">
                 <label for="age">Age</label>
